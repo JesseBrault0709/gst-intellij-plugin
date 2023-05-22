@@ -5,6 +5,7 @@
     <vendor url="https://jessebrault.com" email="jbrault@mac.com">Jesse Brault</vendor>
     <description><![CDATA[Provides support for Groovy GString templates.]]></description>
     <depends>com.intellij.modules.platform</depends>
+    <depends>org.intellij.groovy</depends>
     <extensions defaultExtensionNs="com.intellij">
         <fileType
                 name="Groovy String Template"
@@ -12,6 +13,13 @@
                 fieldName="INSTANCE"
                 language="Groovy String Template"
                 extensions="gst"
+        />
+        <editorHighlighterProvider
+                filetype="Groovy String Template"
+                implementationClass="com.jessebrault.gst.intellij.highlighter.GstEditorHighlighterProvider"
+        />
+        <colorSettingsPage
+                implementation="com.jessebrault.gst.intellij.color.GstColorSettingsPage"
         />
     </extensions>
 </idea-plugin>

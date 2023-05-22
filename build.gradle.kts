@@ -14,10 +14,13 @@ repositories {
 intellij {
     version.set("2023.1.2")
     type.set("IC")
+    plugins.add("org.intellij.groovy")
 }
 
 dependencies {
-    implementation("com.jessebrault.gst:lib")
+    implementation("com.jessebrault.gst:lib") {
+        exclude("org.slf4j", "slf4j-api")
+    }
 }
 
 tasks {

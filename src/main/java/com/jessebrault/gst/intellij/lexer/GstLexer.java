@@ -2,49 +2,79 @@ package com.jessebrault.gst.intellij.lexer;
 
 import com.intellij.lexer.LexerBase;
 import com.intellij.psi.tree.IElementType;
+import com.jessebrault.gst.tokenizer.FsmBasedTokenizer;
+import com.jessebrault.gst.tokenizer.Tokenizer;
+import com.jessebrault.gst.tokenizer.TokenizerState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public final class GstLexer extends LexerBase {
 
+    private final Tokenizer tokenizer = new FsmBasedTokenizer();
+
     @Override
     public void start(@NotNull CharSequence buffer, int startOffset, int endOffset, int initialState) {
-
+        this.tokenizer.start(
+                buffer,
+                startOffset,
+                endOffset,
+                switch (initialState) {
+                    case 0 -> TokenizerState.TEXT;
+                    case 1 -> TokenizerState.SCRIPTLET_BODY;
+                    case 2 -> TokenizerState.SCRIPTLET_CLOSE;
+                    default -> throw new IllegalArgumentException();
+                }
+        );
     }
 
     @Override
     public int getState() {
-        return 0;
+        return this.tokenizer.getCurrentTokenState().ordinal();
     }
 
     @Override
     public @Nullable IElementType getTokenType() {
-        return null;
+        final var token = this.tokenizer.getCurrentToken();
+        if (token == null) {
+            return null;
+        } else {
+            return switch (token.getType()) {
+                case TEXT -> GstTokenType.TEXT;
+                case DOLLAR_REFERENCE -> GstTokenType.DOLLAR_REFERENCE;
+                case BLOCK_SCRIPTLET_OPEN -> GstTokenType.BLOCK_SCRIPTLET_OPEN;
+                case EXPRESSION_SCRIPTLET_OPEN -> GstTokenType.EXPRESSION_SCRIPTLET_OPEN;
+                case SCRIPTLET_BODY -> GstTokenType.SCRIPTLET_BODY;
+                case SCRIPTLET_CLOSE -> GstTokenType.SCRIPTLET_CLOSE;
+                case DOLLAR_SCRIPTLET_OPEN -> GstTokenType.DOLLAR_SCRIPTLET_OPEN;
+                case DOLLAR_SCRIPTLET_BODY -> GstTokenType.DOLLAR_SCRIPTLET_BODY;
+                case DOLLAR_SCRIPTLET_CLOSE -> GstTokenType.DOLLAR_SCRIPTLET_CLOSE;
+            };
+        }
     }
 
     @Override
     public int getTokenStart() {
-        return 0;
+        return this.tokenizer.getCurrentToken().getStartIndex();
     }
 
     @Override
     public int getTokenEnd() {
-        return 0;
+        return this.tokenizer.getCurrentToken().getEndIndex();
     }
 
     @Override
     public void advance() {
-
+        this.tokenizer.advance();
     }
 
     @Override
     public @NotNull CharSequence getBufferSequence() {
-        return null;
+        return this.tokenizer.getCurrentInput();
     }
 
     @Override
     public int getBufferEnd() {
-        return 0;
+        return this.tokenizer.getCurrentEndIndex();
     }
 
 }
