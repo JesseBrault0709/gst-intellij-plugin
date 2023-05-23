@@ -12,7 +12,7 @@ public final class GstLayeredEditorHighlighter extends LayeredLexerEditorHighlig
     public GstLayeredEditorHighlighter(@NotNull EditorColorsScheme scheme) {
         super(new GstSyntaxHighlighter(), scheme);
         final var groovyHighlighter = new GroovySyntaxHighlighter();
-        final var groovyDescriptor = new LayerDescriptor(groovyHighlighter, "\n"); // not sure why \n is tokenSeparator
+        final var groovyDescriptor = new LayerDescriptor(groovyHighlighter, "");
         this.registerLayer(GstTokenType.DOLLAR_REFERENCE, groovyDescriptor);
         this.registerLayer(GstTokenType.SCRIPTLET_BODY, groovyDescriptor);
     }
