@@ -25,5 +25,9 @@
                 implementationClass="com.jessebrault.gst.intellij.psi.GstParserDefinition"
                 language="Groovy String Template"
         />
+        <lang.fileViewProviderFactory
+                language="Groovy String Template"
+                implementationClass="com.jessebrault.gst.intellij.psi.GstFileViewProviderFactory"
+        />
     </extensions>
 </idea-plugin>

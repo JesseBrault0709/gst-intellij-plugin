@@ -21,6 +21,21 @@ dependencies {
     implementation("com.jessebrault.gst:lib") {
         exclude("org.slf4j", "slf4j-api")
     }
+
+    // https://mvnrepository.com/artifact/junit/junit
+    testImplementation("junit:junit:4.13.2")
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.3")
+
+    // https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:1.8.2")
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.3")
+
+    // https://mvnrepository.com/artifact/org.junit.vintage/junit-vintage-engine
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:5.9.3")
 }
 
 tasks {
@@ -42,5 +57,9 @@ tasks {
 
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
+    }
+
+    test {
+        useJUnitPlatform()
     }
 }

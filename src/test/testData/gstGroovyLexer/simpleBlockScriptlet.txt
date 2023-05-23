@@ -1,0 +1,7 @@
+blockScriptletOpen ('<%')
+WHITE_SPACE (' ')
+identifier ('greet')
+( ('(')
+) (')')
+WHITE_SPACE (' ')
+scriptletClose ('%>')

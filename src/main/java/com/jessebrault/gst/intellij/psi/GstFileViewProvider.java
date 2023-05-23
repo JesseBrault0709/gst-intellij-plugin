@@ -6,6 +6,7 @@ import com.intellij.psi.MultiplePsiFilesPerDocumentFileViewProvider;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.impl.source.PsiFileImpl;
 import com.jessebrault.gst.intellij.GstLanguage;
+import com.jessebrault.gst.intellij.psi.groovy.GstGroovyPsiFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.plugins.groovy.GroovyLanguage;
@@ -35,7 +36,11 @@ public final class GstFileViewProvider extends MultiplePsiFilesPerDocumentFileVi
 
     @Override
     protected @Nullable PsiFileImpl createPsiFileImpl(@NotNull Language target) {
-        return super.createPsiFileImpl(target);
+        if (target == this.getBaseLanguage()) {
+            return new GstPsiFile(this);
+        } else {
+            return new GstGroovyPsiFile(this);
+        }
     }
 
 }

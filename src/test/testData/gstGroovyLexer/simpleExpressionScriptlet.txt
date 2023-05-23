@@ -1,0 +1,7 @@
+expressionScriptletOpen ('<%=')
+WHITE_SPACE (' ')
+identifier ('getGreeting')
+( ('(')
+) (')')
+WHITE_SPACE (' ')
+scriptletClose ('%>')
