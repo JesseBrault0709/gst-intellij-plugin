@@ -21,5 +21,9 @@
         <colorSettingsPage
                 implementation="com.jessebrault.gst.intellij.color.GstColorSettingsPage"
         />
+        <lang.parserDefinition
+                implementationClass="com.jessebrault.gst.intellij.psi.GstParserDefinition"
+                language="Groovy String Template"
+        />
     </extensions>
 </idea-plugin>

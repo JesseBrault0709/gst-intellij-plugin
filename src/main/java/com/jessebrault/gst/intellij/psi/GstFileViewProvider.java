@@ -1,11 +1,10 @@
 package com.jessebrault.gst.intellij.psi;
 
 import com.intellij.lang.Language;
-import com.intellij.lang.LanguageParserDefinitions;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.MultiplePsiFilesPerDocumentFileViewProvider;
-import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
+import com.intellij.psi.impl.source.PsiFileImpl;
 import com.jessebrault.gst.intellij.GstLanguage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -26,7 +25,7 @@ public final class GstFileViewProvider extends MultiplePsiFilesPerDocumentFileVi
 
     @Override
     protected @NotNull MultiplePsiFilesPerDocumentFileViewProvider cloneInner(@NotNull VirtualFile fileCopy) {
-        return new GstFileViewProvider(this.getManager(), fileCopy, this.isEventSystemEnabled());
+        return new GstFileViewProvider(this.getManager(), fileCopy, false); // often seems to be false
     }
 
     @Override
@@ -35,17 +34,8 @@ public final class GstFileViewProvider extends MultiplePsiFilesPerDocumentFileVi
     }
 
     @Override
-    protected @Nullable PsiFile createFile(@NotNull Language lang) {
-        if (lang.equals(GstLanguage.INSTANCE)) {
-            return LanguageParserDefinitions.INSTANCE
-                    .forLanguage(GstLanguage.INSTANCE)
-                    .createFile(this);
-        } else if (lang.equals(GroovyLanguage.INSTANCE)) {
-            // TODO
-            return null;
-        } else {
-            return null;
-        }
+    protected @Nullable PsiFileImpl createPsiFileImpl(@NotNull Language target) {
+        return super.createPsiFileImpl(target);
     }
 
 }
