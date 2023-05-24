@@ -15,7 +15,11 @@ import java.util.Set;
 
 public final class GstFileViewProvider extends MultiplePsiFilesPerDocumentFileViewProvider {
 
-    public GstFileViewProvider(@NotNull PsiManager manager, @NotNull VirtualFile virtualFile, boolean eventSystemEnabled) {
+    public GstFileViewProvider(
+            @NotNull PsiManager manager,
+            @NotNull VirtualFile virtualFile,
+            boolean eventSystemEnabled
+    ) {
         super(manager, virtualFile, eventSystemEnabled);
     }
 
@@ -38,8 +42,10 @@ public final class GstFileViewProvider extends MultiplePsiFilesPerDocumentFileVi
     protected @Nullable PsiFileImpl createPsiFileImpl(@NotNull Language target) {
         if (target == this.getBaseLanguage()) {
             return new GstPsiFile(this);
-        } else {
+        } else if (target == GroovyLanguage.INSTANCE) {
             return new GstGroovyPsiFile(this);
+        } else {
+            return null;
         }
     }
 

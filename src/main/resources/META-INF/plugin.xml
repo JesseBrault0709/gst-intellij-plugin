@@ -22,7 +22,7 @@
                 implementation="com.jessebrault.gst.intellij.color.GstColorSettingsPage"
         />
         <lang.parserDefinition
-                implementationClass="com.jessebrault.gst.intellij.psi.GstParserDefinition"
+                implementationClass="com.jessebrault.gst.intellij.parser.GstParserDefinition"
                 language="Groovy String Template"
         />
         <lang.fileViewProviderFactory

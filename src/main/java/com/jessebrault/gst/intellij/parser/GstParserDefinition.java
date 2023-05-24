@@ -1,4 +1,4 @@
-package com.jessebrault.gst.intellij.psi;
+package com.jessebrault.gst.intellij.parser;
 
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
@@ -12,6 +12,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
 import com.jessebrault.gst.intellij.lexer.GstLexer;
+import com.jessebrault.gst.intellij.psi.GstPsiFile;
 import org.jetbrains.annotations.NotNull;
 
 public class GstParserDefinition implements ParserDefinition {

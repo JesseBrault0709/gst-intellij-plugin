@@ -1,4 +1,4 @@
-package com.jessebrault.gst.intellij.psi.groovy;
+package com.jessebrault.gst.intellij.lexer.groovy;
 
 import com.intellij.lexer.Lexer;
 import com.intellij.lexer.LexerBase;
@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.plugins.groovy.lang.lexer.GroovyLexer;
 
-public class GstGroovyLexer extends LexerBase {
+public final class GstGroovyLexer extends LexerBase {
 
     private final Lexer gstLexer = new GstLexer();
     private final Lexer groovyLexer = new GroovyLexer();

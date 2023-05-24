@@ -1,4 +1,4 @@
-package com.jessebrault.gst.intellij.psi;
+package com.jessebrault.gst.intellij.parser;
 
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.IFileElementType;

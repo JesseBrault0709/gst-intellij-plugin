@@ -2,6 +2,7 @@ package com.jessebrault.gst.intellij.psi.groovy;
 
 import com.intellij.lexer.Lexer;
 import com.intellij.testFramework.LexerTestCase;
+import com.jessebrault.gst.intellij.lexer.groovy.GstGroovyLexer;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
 import org.junit.runner.RunWith;
