@@ -43,7 +43,9 @@ public final class GstGroovyLexer extends LexerBase {
             this.currentLexer = this.groovyLexer;
         } else if (currentTokenType == null) {
             this.currentLexer = this.gstLexer;
-            this.currentLexer.advance();
+            if (this.currentLexer.getTokenType() != null) {
+                this.currentLexer.advance();
+            }
         }
         return this.currentLexer.getTokenType();
     }

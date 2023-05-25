@@ -36,4 +36,9 @@ public class GstGroovyLexerTests extends LexerTestCase {
         this.doTest("<%= getGreeting() %>");
     }
 
+    @Test
+    public void empty() {
+        this.doTest("");
+    }
+
 }

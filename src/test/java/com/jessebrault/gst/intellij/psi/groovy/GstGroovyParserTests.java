@@ -1,6 +1,7 @@
 package com.jessebrault.gst.intellij.psi.groovy;
 
 import com.intellij.testFramework.ParsingTestCase;
+import com.jessebrault.gst.intellij.parser.GstParserDefinition;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -9,12 +10,12 @@ import org.junit.runners.JUnit4;
 public final class GstGroovyParserTests extends ParsingTestCase {
 
     public GstGroovyParserTests() {
-        super("", "gst");
+        super("", "gst", new GstParserDefinition());
     }
 
     @Override
     protected String getTestDataPath() {
-        return "src/test/testData/gstGroovyParser";
+        return "src/test/testData/gstParser";
     }
 
     @Override

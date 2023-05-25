@@ -1,0 +1,7 @@
+gstFile(0,32)
+  PsiElement(text)('Hello')(0,5)
+  ASTWrapperPsiElement(blockScriptlet)(5,26)
+    PsiElement(blockScriptletOpen)('<%')(5,7)
+    PsiElement(scriptletBody)(' commaAndSpace() ')(7,24)
+    PsiElement(scriptletClose)('%>')(24,26)
+  PsiElement(text)('world!')(26,32)
