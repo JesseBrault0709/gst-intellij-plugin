@@ -30,4 +30,8 @@
                 implementationClass="com.jessebrault.gst.intellij.psi.GstFileViewProviderFactory"
         />
     </extensions>
+
+    <extensions defaultExtensionNs="org.intellij.groovy">
+        <membersContributor implementation="com.jessebrault.gst.intellij.resolve.GstMembersContributor" />
+    </extensions>
 </idea-plugin>
