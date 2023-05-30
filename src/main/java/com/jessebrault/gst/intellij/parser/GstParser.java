@@ -59,16 +59,35 @@ public class GstParser implements PsiParser {
 
     private void textDollarReferenceOrScriptlet() {
         final var actual = this.builder.getTokenType();
-        if (testTokenType(actual, TEXT, DOLLAR_REFERENCE)) {
+        if (testTokenType(actual, TEXT)) {
             this.builder.advanceLexer();
+        } else if (testTokenType(actual, DOLLAR_REFERENCE_DOLLAR)) {
+            this.dollarReference();
         } else if (testTokenType(actual, BLOCK_SCRIPTLET_OPEN)) {
             this.blockScriptlet();
         } else if (testTokenType(actual, EXPRESSION_SCRIPTLET_OPEN)) {
             this.expressionScriptlet();
         } else if (actual != null) {
-            this.builder.error(getError(actual, TEXT, DOLLAR_REFERENCE, BLOCK_SCRIPTLET_OPEN, EXPRESSION_SCRIPTLET_OPEN));
+            this.builder.error(getError(actual, TEXT, DOLLAR_REFERENCE_DOLLAR, BLOCK_SCRIPTLET_OPEN, EXPRESSION_SCRIPTLET_OPEN));
             this.builder.advanceLexer();
             this.textDollarReferenceOrScriptlet();
+        }
+    }
+
+    private void dollarReference() {
+        final var m = this.builder.mark();
+        final var t0 = this.builder.getTokenType();
+        if (testTokenType(t0, DOLLAR_REFERENCE_DOLLAR)) {
+            this.builder.advanceLexer();
+            final var t1 = this.builder.getTokenType();
+            if (testTokenType(t1, DOLLAR_REFERENCE_BODY)) {
+                this.builder.advanceLexer();
+                m.done(GstElements.DOLLAR_REFERENCE);
+            } else {
+                this.builder.error(getError(t1, DOLLAR_REFERENCE_BODY));
+            }
+        } else {
+            this.builder.error(getError(t0, DOLLAR_REFERENCE_DOLLAR));
         }
     }
 

@@ -28,4 +28,14 @@ public final class GstGroovyParserTests extends ParsingTestCase {
         this.doTest(true);
     }
 
+    @Test
+    public void dollarReference() {
+        this.doTest(true);
+    }
+
+    @Test
+    public void dollarReferenceFollowedByTextDot() {
+        this.doTest(true);
+    }
+
 }

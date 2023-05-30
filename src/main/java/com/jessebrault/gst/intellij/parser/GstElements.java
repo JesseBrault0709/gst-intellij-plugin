@@ -7,6 +7,7 @@ import com.jessebrault.gst.intellij.GstLanguage;
 public final class GstElements {
 
     public static final IFileElementType GST_FILE = new IFileElementType("gstFile", GstLanguage.INSTANCE);
+    public static final IElementType DOLLAR_REFERENCE = new IElementType("dollarReference", GstLanguage.INSTANCE);
     public static final IElementType BLOCK_SCRIPTLET = new IElementType("blockScriptlet", GstLanguage.INSTANCE);
 
 }

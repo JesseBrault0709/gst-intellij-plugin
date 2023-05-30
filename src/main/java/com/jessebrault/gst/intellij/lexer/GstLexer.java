@@ -20,8 +20,9 @@ public final class GstLexer extends LexerBase {
                 endOffset,
                 switch (initialState) {
                     case 0 -> TokenizerState.TEXT;
-                    case 1 -> TokenizerState.SCRIPTLET_BODY;
-                    case 2 -> TokenizerState.SCRIPTLET_CLOSE;
+                    case 1 -> TokenizerState.DOLLAR_REFERENCE_BODY;
+                    case 2 -> TokenizerState.SCRIPTLET_BODY;
+                    case 3 -> TokenizerState.SCRIPTLET_CLOSE;
                     default -> throw new IllegalArgumentException();
                 }
         );
@@ -40,7 +41,8 @@ public final class GstLexer extends LexerBase {
         } else {
             return switch (token.getType()) {
                 case TEXT -> GstTokenType.TEXT;
-                case DOLLAR_REFERENCE -> GstTokenType.DOLLAR_REFERENCE;
+                case DOLLAR_REFERENCE_DOLLAR -> GstTokenType.DOLLAR_REFERENCE_DOLLAR;
+                case DOLLAR_REFERENCE_BODY -> GstTokenType.DOLLAR_REFERENCE_BODY;
                 case BLOCK_SCRIPTLET_OPEN -> GstTokenType.BLOCK_SCRIPTLET_OPEN;
                 case EXPRESSION_SCRIPTLET_OPEN -> GstTokenType.EXPRESSION_SCRIPTLET_OPEN;
                 case SCRIPTLET_BODY -> GstTokenType.SCRIPTLET_BODY;
@@ -54,11 +56,13 @@ public final class GstLexer extends LexerBase {
 
     @Override
     public int getTokenStart() {
+        //noinspection DataFlowIssue
         return this.tokenizer.getCurrentToken().getStartIndex();
     }
 
     @Override
     public int getTokenEnd() {
+        //noinspection DataFlowIssue
         return this.tokenizer.getCurrentToken().getEndIndex();
     }
 

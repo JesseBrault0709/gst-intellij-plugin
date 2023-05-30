@@ -9,7 +9,15 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.plugins.groovy.lang.lexer.GroovyLexer;
 
+import java.util.Collection;
+import java.util.List;
+
 public final class GstGroovyLexer extends LexerBase {
+
+    private static final Collection<IElementType> toBeProcessedByGroovy = List.of(
+            GstTokenType.DOLLAR_REFERENCE_BODY,
+            GstTokenType.SCRIPTLET_BODY
+    );
 
     private final Lexer gstLexer = new GstLexer();
     private final Lexer groovyLexer = new GroovyLexer();
@@ -34,7 +42,7 @@ public final class GstGroovyLexer extends LexerBase {
     @Override
     public @Nullable IElementType getTokenType() {
         final var currentTokenType = this.currentLexer.getTokenType();
-        if (currentTokenType != null && currentTokenType.equals(GstTokenType.SCRIPTLET_BODY)) {
+        if (currentTokenType != null && toBeProcessedByGroovy.contains(currentTokenType)) {
             this.groovyLexer.start(
                     this.buffer,
                     this.gstLexer.getTokenStart(),

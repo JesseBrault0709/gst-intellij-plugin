@@ -1,0 +1,2 @@
+dollarReferenceDollar ('$')
+identifier ('test')

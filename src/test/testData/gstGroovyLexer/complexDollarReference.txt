@@ -1,0 +1,6 @@
+dollarReferenceDollar ('$')
+identifier ('a')
+. ('.')
+identifier ('b')
+. ('.')
+identifier ('c')

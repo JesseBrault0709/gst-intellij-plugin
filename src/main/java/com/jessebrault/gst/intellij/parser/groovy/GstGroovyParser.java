@@ -18,7 +18,8 @@ public final class GstGroovyParser implements PsiParser {
 
         private static final Collection<IElementType> gstTokens = List.of(
                 GstTokenType.TEXT,
-                GstTokenType.DOLLAR_REFERENCE,
+                GstTokenType.DOLLAR_REFERENCE_DOLLAR,
+                GstTokenType.DOLLAR_REFERENCE_BODY,
                 GstTokenType.BLOCK_SCRIPTLET_OPEN,
                 GstTokenType.EXPRESSION_SCRIPTLET_OPEN,
                 GstTokenType.SCRIPTLET_BODY,

@@ -41,4 +41,19 @@ public class GstGroovyLexerTests extends LexerTestCase {
         this.doTest("");
     }
 
+    @Test
+    public void dollarReference() {
+        this.doTest("$test");
+    }
+
+    @Test
+    public void complexDollarReference() {
+        this.doTest("$a.b.c");
+    }
+
+    @Test
+    public void dollarReferenceFollowedByTextDot() {
+        this.doTest("$a.b.c.");
+    }
+
 }

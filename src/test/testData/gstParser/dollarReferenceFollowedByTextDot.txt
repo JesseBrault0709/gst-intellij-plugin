@@ -1,0 +1,5 @@
+gstFile(0,7)
+  ASTWrapperPsiElement(dollarReference)(0,6)
+    PsiElement(dollarReferenceDollar)('$')(0,1)
+    PsiElement(dollarReferenceBody)('a.b.c')(1,6)
+  PsiElement(text)('.')(6,7)
