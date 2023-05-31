@@ -13,7 +13,10 @@ import org.jetbrains.plugins.groovy.GroovyLanguage;
 
 import java.util.Set;
 
-public final class GstFileViewProvider extends MultiplePsiFilesPerDocumentFileViewProvider {
+/**
+ * Can be extended.
+ */
+public class GstFileViewProvider extends MultiplePsiFilesPerDocumentFileViewProvider {
 
     public GstFileViewProvider(
             @NotNull PsiManager manager,
@@ -40,9 +43,9 @@ public final class GstFileViewProvider extends MultiplePsiFilesPerDocumentFileVi
 
     @Override
     protected @Nullable PsiFileImpl createPsiFileImpl(@NotNull Language target) {
-        if (target == this.getBaseLanguage()) {
+        if (target.equals(GstLanguage.INSTANCE)) {
             return new GstPsiFile(this);
-        } else if (target == GroovyLanguage.INSTANCE) {
+        } else if (target.equals(GroovyLanguage.INSTANCE)) {
             return new GstGroovyPsiFile(this);
         } else {
             return null;
