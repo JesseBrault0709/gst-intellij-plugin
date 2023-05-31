@@ -1,5 +1,5 @@
 plugins {
-    id("gst.intellij.common")
+    id("com.jessebrault.jbarchiva").version("0.1.0")
     id("java")
     id("org.jetbrains.intellij").version("1.13.3")
 }
