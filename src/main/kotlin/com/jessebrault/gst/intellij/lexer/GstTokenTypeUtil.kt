@@ -1,9 +1,8 @@
-@file:JvmName("PsiBuilderTokenProviderUtil")
+@file:JvmName("GstTokenTypeUtil")
 
-package com.jessebrault.gst.intellij.parser
+package com.jessebrault.gst.intellij.lexer
 
 import com.intellij.psi.tree.IElementType
-import com.jessebrault.gst.intellij.lexer.GstTokenType
 import com.jessebrault.gst.tokenizer.TokenType
 import com.jessebrault.gst.tokenizer.TokenType.*
 

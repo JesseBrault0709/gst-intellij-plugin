@@ -6,7 +6,7 @@ import com.jessebrault.gst.tokenizer.Token;
 import com.jessebrault.gst.tokenizer.TokenProvider;
 import org.jetbrains.annotations.Nullable;
 
-import static com.jessebrault.gst.intellij.parser.PsiBuilderTokenProviderUtil.mapIElementType;
+import static com.jessebrault.gst.intellij.lexer.GstTokenTypeUtil.mapIElementType;
 
 final class PsiBuilderTokenProvider implements TokenProvider {
 
