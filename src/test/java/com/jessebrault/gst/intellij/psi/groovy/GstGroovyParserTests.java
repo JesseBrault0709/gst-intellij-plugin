@@ -38,4 +38,9 @@ public final class GstGroovyParserTests extends ParsingTestCase {
         this.doTest(true);
     }
 
+    @Test
+    public void importBlock() {
+        this.doTest(true);
+    }
+
 }

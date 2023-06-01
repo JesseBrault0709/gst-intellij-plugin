@@ -1,0 +1,5 @@
+gstFile(0,23)
+  PsiErrorElement:ImportBlocks are not permitted by the StandardGStringParser.(0,23)
+    PsiElement(importBlockOpen)('<%@')(0,3)
+    PsiElement(importBlockBody)(' import test.test ')(3,21)
+    PsiElement(importBlockClose)('%>')(21,23)

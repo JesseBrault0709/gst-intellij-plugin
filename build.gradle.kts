@@ -1,11 +1,16 @@
 plugins {
     id("com.jessebrault.jbarchiva").version("0.1.0")
     id("java")
+    id("org.jetbrains.kotlin.jvm").version("1.8.21")
     id("org.jetbrains.intellij").version("1.13.3")
 }
 
 group = "com.jessebrault"
 version = "0.0.1-SNAPSHOT"
+
+kotlin {
+    jvmToolchain(17)
+}
 
 repositories {
     mavenCentral()
@@ -61,5 +66,13 @@ tasks {
 
     test {
         useJUnitPlatform()
+    }
+
+    compileKotlin {
+        kotlinOptions.jvmTarget = "17"
+    }
+
+    compileTestKotlin {
+        kotlinOptions.jvmTarget = "17"
     }
 }
