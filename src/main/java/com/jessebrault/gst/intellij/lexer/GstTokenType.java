@@ -12,6 +12,9 @@ public final class GstTokenType extends IElementType {
     public static final GstTokenType EXPRESSION_SCRIPTLET_OPEN = new GstTokenType("expressionScriptletOpen");
     public static final GstTokenType SCRIPTLET_BODY = new GstTokenType("scriptletBody");
     public static final GstTokenType SCRIPTLET_CLOSE = new GstTokenType("scriptletClose");
+    public static final GstTokenType IMPORT_BLOCK_OPEN = new GstTokenType("importBlockOpen");
+    public static final GstTokenType IMPORT_BLOCK_BODY = new GstTokenType("importBlockBody");
+    public static final GstTokenType IMPORT_BLOCK_CLOSE = new GstTokenType("importBlockClose");
     public static final GstTokenType DOLLAR_SCRIPTLET_OPEN = new GstTokenType("dollarScriptletOpen");
     public static final GstTokenType DOLLAR_SCRIPTLET_BODY = new GstTokenType("dollarScriptletBody");
     public static final GstTokenType DOLLAR_SCRIPTLET_CLOSE = new GstTokenType("dollarScriptletClose");

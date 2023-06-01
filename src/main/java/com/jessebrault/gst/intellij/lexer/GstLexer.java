@@ -18,13 +18,7 @@ public final class GstLexer extends LexerBase {
                 buffer,
                 startOffset,
                 endOffset,
-                switch (initialState) {
-                    case 0 -> TokenizerState.TEXT;
-                    case 1 -> TokenizerState.DOLLAR_REFERENCE_BODY;
-                    case 2 -> TokenizerState.SCRIPTLET_BODY;
-                    case 3 -> TokenizerState.SCRIPTLET_CLOSE;
-                    default -> throw new IllegalArgumentException();
-                }
+                TokenizerState.values()[initialState]
         );
     }
 
@@ -47,6 +41,9 @@ public final class GstLexer extends LexerBase {
                 case EXPRESSION_SCRIPTLET_OPEN -> GstTokenType.EXPRESSION_SCRIPTLET_OPEN;
                 case SCRIPTLET_BODY -> GstTokenType.SCRIPTLET_BODY;
                 case SCRIPTLET_CLOSE -> GstTokenType.SCRIPTLET_CLOSE;
+                case IMPORT_BLOCK_OPEN -> GstTokenType.IMPORT_BLOCK_OPEN;
+                case IMPORT_BLOCK_BODY -> GstTokenType.IMPORT_BLOCK_BODY;
+                case IMPORT_BLOCK_CLOSE -> GstTokenType.IMPORT_BLOCK_CLOSE;
                 case DOLLAR_SCRIPTLET_OPEN -> GstTokenType.DOLLAR_SCRIPTLET_OPEN;
                 case DOLLAR_SCRIPTLET_BODY -> GstTokenType.DOLLAR_SCRIPTLET_BODY;
                 case DOLLAR_SCRIPTLET_CLOSE -> GstTokenType.DOLLAR_SCRIPTLET_CLOSE;

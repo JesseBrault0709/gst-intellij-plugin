@@ -16,7 +16,8 @@ public final class GstGroovyLexer extends LexerBase {
 
     private static final Collection<IElementType> toBeProcessedByGroovy = List.of(
             GstTokenType.DOLLAR_REFERENCE_BODY,
-            GstTokenType.SCRIPTLET_BODY
+            GstTokenType.SCRIPTLET_BODY,
+            GstTokenType.IMPORT_BLOCK_BODY
     );
 
     private final Lexer gstLexer = new GstLexer();
