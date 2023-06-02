@@ -1,6 +1,7 @@
 package com.jessebrault.gst.intellij.parser;
 
 import com.intellij.lang.PsiBuilder;
+import com.intellij.psi.tree.IElementType;
 import com.jessebrault.gst.ast.TreeNodeType;
 import com.jessebrault.gst.parser.ParserAccumulator;
 import com.jessebrault.gst.tokenizer.TokenType;
@@ -9,6 +10,7 @@ import com.jessebrault.gst.util.Diagnostic;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
+import java.util.function.Function;
 
 final class PsiAccumulator implements ParserAccumulator {
 
@@ -25,11 +27,13 @@ final class PsiAccumulator implements ParserAccumulator {
     }
 
     private final PsiBuilder builder;
+    private final Function<TreeNodeType, IElementType> treeNodeTypeMapper;
     private final Deque<PsiBuilder.Marker> markers = new ArrayDeque<>();
     private final Deque<TreeNodeType> treeNodeTypes = new ArrayDeque<>();
 
-    public PsiAccumulator(PsiBuilder builder) {
+    public PsiAccumulator(PsiBuilder builder, Function<TreeNodeType, IElementType> treeNodeTypeMapper) {
         this.builder = builder;
+        this.treeNodeTypeMapper = treeNodeTypeMapper;
     }
 
     @Override
@@ -48,7 +52,7 @@ final class PsiAccumulator implements ParserAccumulator {
         final var marker = this.markers.pop();
         final var treeNodeType = this.treeNodeTypes.pop();
         if (diagnostics.isEmpty()) {
-            marker.done(GstElementsUtil.mapTreeNodeType(treeNodeType));
+            marker.done(this.treeNodeTypeMapper.apply(treeNodeType));
         } else {
             marker.error(combineDiagnostics(diagnostics));
         }
@@ -61,7 +65,7 @@ final class PsiAccumulator implements ParserAccumulator {
     public void done() {
         final var marker = this.markers.pop();
         final var treeNodeType = this.treeNodeTypes.pop();
-        marker.done(GstElementsUtil.mapTreeNodeType(treeNodeType));
+        marker.done(this.treeNodeTypeMapper.apply(treeNodeType));
     }
 
 }

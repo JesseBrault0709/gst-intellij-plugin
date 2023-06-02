@@ -12,14 +12,11 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
 import com.jessebrault.gst.intellij.lexer.GstLexer;
-import com.jessebrault.gst.intellij.psi.GstPsiFile;
-import com.jessebrault.gst.parser.StandardGstParser;
+import com.jessebrault.gst.intellij.psi.EGstPsiFile;
+import com.jessebrault.gst.parser.ExtendedGstParser;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * May be extended.
- */
-public class GstParserDefinition implements ParserDefinition {
+public class EGstParserDefinition implements ParserDefinition {
 
     @Override
     public @NotNull Lexer createLexer(Project project) {
@@ -28,12 +25,12 @@ public class GstParserDefinition implements ParserDefinition {
 
     @Override
     public @NotNull PsiParser createParser(Project project) {
-        return new GstParser(new StandardGstParser(), GstElementsUtil::mapTreeNodeTypeGst);
+        return new GstParser(new ExtendedGstParser(), EGstElementsUtil::mapTreeNodeTypeEGst);
     }
 
     @Override
     public @NotNull IFileElementType getFileNodeType() {
-        return GstElements.GST_FILE;
+        return EGstElements.E_GST_FILE;
     }
 
     @Override
@@ -53,7 +50,7 @@ public class GstParserDefinition implements ParserDefinition {
 
     @Override
     public @NotNull PsiFile createFile(@NotNull FileViewProvider viewProvider) {
-        return new GstPsiFile(viewProvider);
+        return new EGstPsiFile(viewProvider);
     }
 
 }

@@ -8,14 +8,25 @@
     <depends>org.intellij.groovy</depends>
     <extensions defaultExtensionNs="com.intellij">
         <fileType
-                name="Groovy String Template"
+                name="gst"
                 implementationClass="com.jessebrault.gst.intellij.GstFile"
                 fieldName="INSTANCE"
-                language="Groovy String Template"
+                language="gst"
                 extensions="gst"
         />
+        <fileType
+                name="egst"
+                implementationClass="com.jessebrault.gst.intellij.EGstFile"
+                fieldName="INSTANCE"
+                language="egst"
+                extensions="egst"
+        />
         <editorHighlighterProvider
-                filetype="Groovy String Template"
+                filetype="gst"
+                implementationClass="com.jessebrault.gst.intellij.highlighter.GstEditorHighlighterProvider"
+        />
+        <editorHighlighterProvider
+                filetype="egst"
                 implementationClass="com.jessebrault.gst.intellij.highlighter.GstEditorHighlighterProvider"
         />
         <colorSettingsPage
@@ -23,11 +34,19 @@
         />
         <lang.parserDefinition
                 implementationClass="com.jessebrault.gst.intellij.parser.GstParserDefinition"
-                language="Groovy String Template"
+                language="gst"
+        />
+        <lang.parserDefinition
+                implementationClass="com.jessebrault.gst.intellij.parser.EGstParserDefinition"
+                language="egst"
         />
         <lang.fileViewProviderFactory
-                language="Groovy String Template"
+                language="gst"
                 implementationClass="com.jessebrault.gst.intellij.psi.GstFileViewProviderFactory"
+        />
+        <lang.fileViewProviderFactory
+                language="egst"
+                implementationClass="com.jessebrault.gst.intellij.psi.EGstFileViewProviderFactory"
         />
     </extensions>
 

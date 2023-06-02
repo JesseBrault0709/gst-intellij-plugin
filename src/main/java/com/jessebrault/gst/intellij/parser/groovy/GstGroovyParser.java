@@ -24,6 +24,9 @@ public final class GstGroovyParser implements PsiParser {
                 GstTokenType.EXPRESSION_SCRIPTLET_OPEN,
                 GstTokenType.SCRIPTLET_BODY,
                 GstTokenType.SCRIPTLET_CLOSE,
+                GstTokenType.IMPORT_BLOCK_OPEN,
+                GstTokenType.IMPORT_BLOCK_BODY,
+                GstTokenType.IMPORT_BLOCK_CLOSE,
                 GstTokenType.DOLLAR_SCRIPTLET_OPEN,
                 GstTokenType.DOLLAR_SCRIPTLET_BODY,
                 GstTokenType.DOLLAR_SCRIPTLET_CLOSE

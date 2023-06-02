@@ -5,7 +5,7 @@ package com.jessebrault.gst.intellij.parser
 import com.intellij.psi.tree.IElementType
 import com.jessebrault.gst.ast.TreeNodeType
 
-fun mapTreeNodeType(treeNodeType: TreeNodeType): IElementType = when (treeNodeType) {
+fun mapTreeNodeTypeGst(treeNodeType: TreeNodeType): IElementType = when (treeNodeType) {
     TreeNodeType.G_STRING -> GstElements.GST_FILE
     TreeNodeType.DOLLAR_REFERENCE -> GstElements.DOLLAR_REFERENCE
     TreeNodeType.BLOCK_SCRIPTLET -> GstElements.BLOCK_SCRIPTLET

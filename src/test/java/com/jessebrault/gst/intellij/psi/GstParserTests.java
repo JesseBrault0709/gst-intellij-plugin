@@ -1,4 +1,4 @@
-package com.jessebrault.gst.intellij.psi.groovy;
+package com.jessebrault.gst.intellij.psi;
 
 import com.intellij.testFramework.ParsingTestCase;
 import com.jessebrault.gst.intellij.parser.GstParserDefinition;
@@ -7,9 +7,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public final class GstGroovyParserTests extends ParsingTestCase {
+public final class GstParserTests extends ParsingTestCase {
 
-    public GstGroovyParserTests() {
+    public GstParserTests() {
         super("", "gst", new GstParserDefinition());
     }
 

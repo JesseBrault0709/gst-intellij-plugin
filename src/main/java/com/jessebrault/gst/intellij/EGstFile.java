@@ -3,33 +3,32 @@ package com.jessebrault.gst.intellij;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import com.intellij.openapi.util.NlsContexts;
-import com.intellij.openapi.util.NlsSafe;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.Icon;
+import javax.swing.*;
 
-public final class GstFile extends LanguageFileType {
+public final class EGstFile extends LanguageFileType {
 
-    public static final GstFile INSTANCE = new GstFile();
+    public static final EGstFile INSTANCE = new EGstFile();
 
-    public GstFile() {
-        super(GstLanguage.INSTANCE);
+    public EGstFile() {
+        super(EGstLanguage.INSTANCE);
     }
 
     @Override
     public @NonNls @NotNull String getName() {
-        return "gst";
+        return "egst";
     }
 
     @Override
     public @NlsContexts.Label @NotNull String getDescription() {
-        return "Groovy string template";
+        return "Extended Groovy string templates";
     }
 
     @Override
     public @NotNull String getDefaultExtension() {
-        return "gst";
+        return "egst";
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.jessebrault.gst.intellij.psi.groovy;
+package com.jessebrault.gst.intellij.lexer.groovy;
 
 import com.intellij.lexer.Lexer;
 import com.intellij.testFramework.LexerTestCase;
