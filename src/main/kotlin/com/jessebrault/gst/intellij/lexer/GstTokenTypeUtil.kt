@@ -6,7 +6,7 @@ import com.intellij.psi.tree.IElementType
 import com.jessebrault.gst.tokenizer.TokenType
 import com.jessebrault.gst.tokenizer.TokenType.*
 
-fun mapIElementType(iElementType: IElementType): TokenType = when (iElementType) {
+fun mapIElementType(elementType: IElementType): TokenType = when (elementType) {
     GstTokenType.TEXT -> TEXT
     GstTokenType.DOLLAR_REFERENCE_DOLLAR -> DOLLAR_REFERENCE_DOLLAR
     GstTokenType.DOLLAR_REFERENCE_BODY -> DOLLAR_REFERENCE_BODY
@@ -20,5 +20,5 @@ fun mapIElementType(iElementType: IElementType): TokenType = when (iElementType)
     GstTokenType.DOLLAR_SCRIPTLET_OPEN -> DOLLAR_SCRIPTLET_OPEN
     GstTokenType.DOLLAR_SCRIPTLET_BODY -> DOLLAR_SCRIPTLET_BODY
     GstTokenType.DOLLAR_SCRIPTLET_CLOSE -> DOLLAR_SCRIPTLET_CLOSE
-    else -> throw IllegalArgumentException("Unable to map iElementToken: $iElementType")
+    else -> throw IllegalArgumentException("Unable to map iElementToken: $elementType")
 }

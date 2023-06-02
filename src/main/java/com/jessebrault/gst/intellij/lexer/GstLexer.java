@@ -29,11 +29,11 @@ public final class GstLexer extends LexerBase {
 
     @Override
     public @Nullable IElementType getTokenType() {
-        final var token = this.tokenizer.getCurrentToken();
-        if (token == null) {
+        final var tokenType = this.tokenizer.getCurrentType();
+        if (tokenType == null) {
             return null;
         } else {
-            return switch (token.getType()) {
+            return switch (tokenType) {
                 case TEXT -> GstTokenType.TEXT;
                 case DOLLAR_REFERENCE_DOLLAR -> GstTokenType.DOLLAR_REFERENCE_DOLLAR;
                 case DOLLAR_REFERENCE_BODY -> GstTokenType.DOLLAR_REFERENCE_BODY;
@@ -53,14 +53,12 @@ public final class GstLexer extends LexerBase {
 
     @Override
     public int getTokenStart() {
-        //noinspection DataFlowIssue
-        return this.tokenizer.getCurrentToken().getStartIndex();
+        return this.tokenizer.getCurrentStart();
     }
 
     @Override
     public int getTokenEnd() {
-        //noinspection DataFlowIssue
-        return this.tokenizer.getCurrentToken().getEndIndex();
+        return this.tokenizer.getCurrentEnd();
     }
 
     @Override
@@ -75,7 +73,7 @@ public final class GstLexer extends LexerBase {
 
     @Override
     public int getBufferEnd() {
-        return this.tokenizer.getCurrentEndIndex();
+        return this.tokenizer.getInputEndIndex();
     }
 
 }
