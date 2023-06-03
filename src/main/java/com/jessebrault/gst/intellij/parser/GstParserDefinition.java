@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * May be extended.
  */
-public class GstParserDefinition implements ParserDefinition {
+public final class GstParserDefinition implements ParserDefinition {
 
     @Override
     public @NotNull Lexer createLexer(Project project) {
@@ -28,7 +28,7 @@ public class GstParserDefinition implements ParserDefinition {
 
     @Override
     public @NotNull PsiParser createParser(Project project) {
-        return new GstParser(new StandardGstParser(), GstElementsUtil::mapTreeNodeTypeGst);
+        return new GstParser();
     }
 
     @Override

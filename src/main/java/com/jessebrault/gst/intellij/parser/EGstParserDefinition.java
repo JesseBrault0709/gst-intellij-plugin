@@ -13,10 +13,9 @@ import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
 import com.jessebrault.gst.intellij.lexer.GstLexer;
 import com.jessebrault.gst.intellij.psi.EGstPsiFile;
-import com.jessebrault.gst.parser.ExtendedGstParser;
 import org.jetbrains.annotations.NotNull;
 
-public class EGstParserDefinition implements ParserDefinition {
+public final class EGstParserDefinition implements ParserDefinition {
 
     @Override
     public @NotNull Lexer createLexer(Project project) {
@@ -25,7 +24,7 @@ public class EGstParserDefinition implements ParserDefinition {
 
     @Override
     public @NotNull PsiParser createParser(Project project) {
-        return new GstParser(new ExtendedGstParser(), EGstElementsUtil::mapTreeNodeTypeEGst);
+        return new EGstParser();
     }
 
     @Override

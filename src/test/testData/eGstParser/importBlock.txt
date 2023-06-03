@@ -1,0 +1,5 @@
+eGstFile(0,23)
+  ASTWrapperPsiElement(importBlock)(0,23)
+    PsiElement(importBlockOpen)('<%@')(0,3)
+    PsiElement(importBlockBody)(' import test.Test ')(3,21)
+    PsiElement(importBlockClose)('%>')(21,23)
